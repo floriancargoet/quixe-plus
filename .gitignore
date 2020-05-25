@@ -1,0 +1,12 @@
+.DS_Store
+/node_modules/
+/build/
+coverage/
+
+# Inform files
+**/*.materials/
+**/*.inform/Build/
+**/*.inform/Index/
+**/*.inform/Release.blurb
+**/*.inform/Skein.skein
+**/*.inform/notes.rtf
