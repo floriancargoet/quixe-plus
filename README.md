@@ -94,7 +94,12 @@ TODO!
 
 #### Globals
 
-TODO!
+QuixePlus can retrieve global variables but there's a caveat: you can't access them by name in pure Inform 7.
+Inform 7 stores global variables in a global array (named `Global_Vars`) and their name is lost. You can still access them but you need to know their index in the array.
+
+However, you can access Inform6 globals by name, so we can tell Inform7 to translate our I7 variable to an I6 variable instead of putting it into the `Global_Vars` array.
+
+See [this test](https://github.com/floriancargoet/quixe-plus/blob/master/src/__tests__/Global_Vars.test.js) for an example.
 
 #### Player & inventory
 
