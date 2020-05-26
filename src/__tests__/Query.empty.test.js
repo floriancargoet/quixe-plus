@@ -1,6 +1,6 @@
 /* eslint-env jest */
 /* global withStory */
-const { QQ, Q } = require("../QQ.js");
+const { query: Q, queryAll: QQ } = require("../query.js");
 
 withStory("empty", () => {
   test("*", () => {
