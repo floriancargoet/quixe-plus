@@ -2,7 +2,12 @@
 /* global withStory */
 const { query: Q, queryAll: QQ } = require("../query.js");
 
-withStory("empty", () => {
+const emptyStory = `"Empty" by Florian.
+
+The empty room is a room. "Nothing here."
+`;
+
+withStory(emptyStory, () => {
   test("*", () => {
     const results = QQ("*");
     expect(results).not.toBeNull();

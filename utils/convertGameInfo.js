@@ -1,12 +1,14 @@
 /* eslint-env node */
 const xml2js = require("xml2js");
 
-module.exports = function convertGameInfo(xmlString, callback) {
+module.exports = function convertGameInfo(xmlString) {
   const parser = new xml2js.Parser();
+  let gameinfo;
 
+  // despite taking a callbacj, parseString is synchronous
   parser.parseString(xmlString, function (error, result) {
     if (error) {
-      return callback(error);
+      throw error;
     }
 
     function firstStringMapper(key) {
@@ -45,14 +47,14 @@ module.exports = function convertGameInfo(xmlString, callback) {
       return map;
     }
 
-    const converted = {
+    gameinfo = {
       globalsByID: makeMap("global-variable", firstIntegerMapper("address")),
       objectsByID: makeMap("object"),
       propertiesByID: makeMap("property"),
       attributesByID: makeMap("attribute"),
       arraysByID: makeMap("array", arrayMapper()),
     };
-
-    callback(null, converted);
   });
+
+  return gameinfo;
 };

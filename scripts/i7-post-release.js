@@ -36,16 +36,8 @@ if (!fs.existsSync(GAMEINFO_FILE)) {
   process.exit(1);
 }
 
-convertGameinfo(fs.readFileSync(GAMEINFO_FILE, "utf8"), function (
-  error,
-  converted
-) {
-  if (error) {
-    console.error(error);
-    process.exit(1);
-  }
+const gameinfo = convertGameinfo(fs.readFileSync(GAMEINFO_FILE, "utf8"));
 
-  const gameinfoContents = `var gameinfo = ${JSON.stringify(converted)};`;
-  fs.writeFileSync(path.resolve(RELEASE_DIR, "gameinfo.js"), gameinfoContents);
-  console.log("Post Release Script has finished");
-});
+const gameinfoContents = `var gameinfo = ${JSON.stringify(gameinfo)};`;
+fs.writeFileSync(path.resolve(RELEASE_DIR, "gameinfo.js"), gameinfoContents);
+console.log("Post Release Script has finished");
