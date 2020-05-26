@@ -8,8 +8,8 @@ The empty room is a room. "Nothing here."
 `;
 
 withStory(emptyStory, () => {
-  test("*", () => {
-    const results = QQ("*");
+  test("**", () => {
+    const results = QQ("**");
     expect(results).not.toBeNull();
     expect(results).toHaveLength(
       1 + // nothing
@@ -21,6 +21,12 @@ withStory(emptyStory, () => {
       1 + // player
         1 // the empty_room
     );
+  });
+
+  test("*", () => {
+    const results = QQ("*");
+    expect(results).not.toBeNull();
+    expect(results).toHaveLength(1); // the empty_room
   });
 
   test("empty_room", () => {
