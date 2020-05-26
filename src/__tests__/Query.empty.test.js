@@ -10,7 +10,7 @@ The empty room is a room. "Nothing here."
 withStory(emptyStory, () => {
   test("**", () => {
     const results = QQ("**");
-    expect(results).not.toBeNull();
+    expect(results).toBeTruthy();
     expect(results).toHaveLength(
       1 + // nothing
       1 + // compass
@@ -25,12 +25,12 @@ withStory(emptyStory, () => {
 
   test("*", () => {
     const results = QQ("*");
-    expect(results).not.toBeNull();
+    expect(results).toBeTruthy();
     expect(results).toHaveLength(1); // the empty_room
   });
 
   test("empty_room", () => {
-    expect(Q("empty_room")).not.toBeNull();
+    expect(Q("empty_room")).toBeTruthy();
   });
 
   test("inexistant object", () => {
