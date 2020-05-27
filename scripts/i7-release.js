@@ -16,7 +16,7 @@ const LIBRARY = `${APP_CONTENTS}/Resources/Library/6.11`;
 
 if (!process.argv[2]) {
   console.error("Usage:");
-  console.error(`node i7-release.js path/to/story.inform`)
+  console.error(`node i7-release.js path/to/story.inform`);
   process.exit(1);
 }
 
@@ -33,8 +33,11 @@ if (!fs.existsSync(PROJECT_DIR)) {
 }
 
 function exec(command, args) {
-    // remove empty args, always execute in BUILD_DIR
-    cp.spawnSync(command, args.filter(Boolean), { stdio: "inherit", cwd: BUILD_DIR });
+  // remove empty args, always execute in BUILD_DIR
+  cp.spawnSync(command, args.filter(Boolean), {
+    stdio: "inherit",
+    cwd: BUILD_DIR,
+  });
 }
 
 // Compile I7 to I6
@@ -47,26 +50,23 @@ exec(NI_BIN, [
   PROJECT_DIR,
   "-format=ulx",
   "-noprogress",
-  process.env.TESTING === "1" ? "": "-release"
+  process.env.TESTING === "1" ? "" : "-release",
 ]);
 
 // Compile I6 to ULX
-exec(
-  I6_BIN,
-  [
-    // Flags (we use the same flags as the IDE on OSX)
-    // k = output Infix debugging information to "gameinfo.dbg" (and switch -D on)
-    // E2 = Macintosh MPW-style error messages
-    // S = compile strict error-checking at run-time
-    // D = insert "Constant DEBUG;" automatically
-    // w = disable warning messages
-    // G = compile a Glulx game file
-    process.env.TESTING === "1" ? "-kE2SDwG" : "-kE2~S~DwG", // disable S & D but keep k in non-testing mode
-    `+include_path=${LIBRARY},.,../Source`,
-    `${PROJECT_DIR}/Build/auto.inf`,
-    `${PROJECT_DIR}/Build/output.ulx`,
-  ]
-);
+exec(I6_BIN, [
+  // Flags (we use the same flags as the IDE on OSX)
+  // k = output Infix debugging information to "gameinfo.dbg" (and switch -D on)
+  // E2 = Macintosh MPW-style error messages
+  // S = compile strict error-checking at run-time
+  // D = insert "Constant DEBUG;" automatically
+  // w = disable warning messages
+  // G = compile a Glulx game file
+  process.env.TESTING === "1" ? "-kE2SDwG" : "-kE2~S~DwG", // disable S & D but keep k in non-testing mode
+  `+include_path=${LIBRARY},.,../Source`,
+  `${PROJECT_DIR}/Build/auto.inf`,
+  `${PROJECT_DIR}/Build/output.ulx`,
+]);
 
 // In testing mode on OSX, the blurb file doesn't contain release instructions
 // Let's add them
@@ -84,10 +84,10 @@ if (process.env.TESTING === "1") {
 }
 
 // Release the story
-exec(
-  CBLORB_BIN,
-  [`${PROJECT_DIR}/Release.blurb`, `${PROJECT_DIR}/Build/output.gblorb`]
-);
+exec(CBLORB_BIN, [
+  `${PROJECT_DIR}/Release.blurb`,
+  `${PROJECT_DIR}/Build/output.gblorb`,
+]);
 
 // Post release
 // To speed up the XML parsing, we can lighten the debug file beforehand
@@ -105,8 +105,6 @@ try {
     "/inform-story-file/constant",
     "-d",
     "/inform-story-file/table-entry",
-    "-d",
-    "/inform-story-file/class",
     "-d",
     "/inform-story-file/fake-action",
     "-d",

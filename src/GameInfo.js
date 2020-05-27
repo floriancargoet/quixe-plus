@@ -1,5 +1,6 @@
 import {
   objectIDToName,
+  classIDToName,
   attributeIDToName,
   propertyIDToName,
 } from "./utils.js";
@@ -7,17 +8,25 @@ import { VM } from "./VM.js";
 
 class GameInfo {
   objectsByValue = {};
+  classesByValue = {};
   arraysByValue = {};
+  propertyIDsByValue = {};
+
   objectIDsByName = {};
+  classIDsByName = {};
   attributeIDsByName = {};
   propertyIDsByName = {};
 
   init(gameinfo) {
     Object.assign(this, gameinfo);
-    // Reverse the object & array maps
+    // Reverse the object, class & array maps
     Object.keys(this.objectsByID).forEach((id) => {
       const value = this.getObjectValueByID(id);
       this.objectsByValue[value] = id;
+    });
+    Object.keys(this.classesByID).forEach((id) => {
+      const value = this.getClassValueByID(id);
+      this.classesByValue[value] = id;
     });
     Object.keys(this.arraysByID).forEach((id) => {
       const array = this.getArrayByID(id);
@@ -29,11 +38,15 @@ class GameInfo {
     Object.keys(this.objectsByID).forEach((id) => {
       this.objectIDsByName[objectIDToName(id)] = id;
     });
+    Object.keys(this.classesByID).forEach((id) => {
+      this.classIDsByName[classIDToName(id)] = id;
+    });
     Object.keys(this.attributesByID).forEach((id) => {
       this.attributeIDsByName[attributeIDToName(id)] = id;
     });
     Object.keys(this.propertiesByID).forEach((id) => {
       this.propertyIDsByName[propertyIDToName(id)] = id;
+      this.propertyIDsByValue[this.propertiesByID[id]] = id;
     });
   }
 
@@ -44,13 +57,15 @@ class GameInfo {
     if (this.arraysByValue[value]) {
       return "array";
     }
-
+    if (this.classesByValue[value]) {
+      return "class";
+    }
     return "unknown";
   }
 
   getGlobalValueByID(id) {
     const addr = this.globalsByID[id];
-    return VM.getGlobal(addr); // value
+    return VM.read4(addr); // value
   }
 
   getObjectValueByID(id) {
@@ -63,6 +78,18 @@ class GameInfo {
 
   getObjectIDByName(name) {
     return this.objectIDsByName[name]; // id
+  }
+
+  getClassValueByID(id) {
+    return this.classesByID[id]; // value
+  }
+
+  getClassIDByValue(value) {
+    return this.classesByValue[value]; // id
+  }
+
+  getClassIDByName(name) {
+    return this.classIDsByName[name]; // id
   }
 
   getArrayByID(id) {

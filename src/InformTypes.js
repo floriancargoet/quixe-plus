@@ -1,6 +1,6 @@
 import { gameinfo } from "./GameInfo.js";
 import { VM } from "./VM.js";
-import { objectIDToName } from "./utils.js";
+import { objectIDToName, classIDToName } from "./utils.js";
 
 export class InformValue {
   value = 0;
@@ -115,6 +115,16 @@ export class InformString extends InformArray {
 }
 
 export class InformObject extends InformValue {
+  /*
+  byte: 70 (type identifier for objects)
+  byte[7]: attributes
+  long: next object in the overall linked list
+  long: hardware name string
+  long: property table address
+  long: parent object
+  long: sibling object
+  long: child object
+  */
   id = "";
   name = "";
 
@@ -172,10 +182,53 @@ export class InformObject extends InformValue {
     this.name = objectIDToName(this.id);
   }
 
+  get kind() {
+    return this.getProperty("inheritance class", InformClass);
+  }
+
+  get kinds() {
+    const hierarchy = InformArray.create("KindHierarchy").toJSArray();
+    const hierarchyMap = {};
+    hierarchy.forEach((kind, i) => {
+      if (i % 2 === 0) {
+        const superKind = hierarchy[hierarchy[i + 1] * 2];
+        hierarchyMap[kind] = superKind;
+      }
+    });
+
+    const kinds = [];
+    let kind = this.getProperty("inheritance class"),
+      lastKind;
+    while (kind !== lastKind) {
+      kinds.push(kind);
+      lastKind = kind;
+      kind = hierarchyMap[kind];
+    }
+    return kinds.map((k) => InformClass.create(k));
+  }
+
+  get children() {
+    const children = [];
+    let firstChild = VM.getObjectFirstChild(this.value);
+    if (firstChild) {
+      let child = firstChild;
+      while (child) {
+        children.push(InformObject.create(child));
+        child = VM.getObjectSibling(child);
+      }
+    }
+    return children;
+  }
+
+  get parent() {
+    const value = VM.getObjectParent(this.value);
+    return value ? InformObject.create(value) : null;
+  }
+
   getProperty(propName, Class) {
     const propID = gameinfo.getPropertyIDByName(propName);
     if (!propID) return null;
-    const value = VM.getProperty(
+    const value = VM.getObjectProperty(
       this.value,
       gameinfo.getPropertyValueByID(propID)
     );
@@ -194,7 +247,7 @@ export class InformObject extends InformValue {
     const attrID = gameinfo.getAttributeIDByName(attrName);
     if (!attrID) return null;
     return Boolean(
-      VM.getAttribute(this.value, gameinfo.getAttributeValueByID(attrID))
+      VM.getObjectAttribute(this.value, gameinfo.getAttributeValueByID(attrID))
     );
   }
 
@@ -217,25 +270,6 @@ export class InformObject extends InformValue {
     return negated ? !result : result;
   }
 
-  get children() {
-    const children = [];
-    let firstChild = VM.getFirstChild(this.value);
-    if (firstChild) {
-      let child = firstChild;
-      while (child) {
-        children.push(InformObject.create(child));
-        child = VM.getSibling(child);
-      }
-    }
-    return children;
-  }
-
-  get parent() {
-    return InformObject.create(
-      gameinfo.getObjectIDByValue(VM.getParent(this.value))
-    );
-  }
-
   traverse(fn) {
     function traverse(node) {
       fn(node);
@@ -244,5 +278,34 @@ export class InformObject extends InformValue {
       }
     }
     traverse(this);
+  }
+}
+
+// Classes have the same structure as objects
+export class InformClass extends InformObject {
+  static create(idOrValue) {
+    if (idOrValue == null) {
+      throw new Error("Invalid InformClass");
+    }
+    let id, value;
+    if (typeof idOrValue === "string") {
+      id = idOrValue;
+    } else {
+      value = idOrValue;
+    }
+    id = id || gameinfo.getClassIDByValue(value);
+    value = value || gameinfo.getClassValueByID(id);
+    if (id == null || value == null) {
+      throw new Error("Invalid InformClass");
+    }
+    return new InformClass(id, value);
+  }
+
+  constructor(id, value) {
+    if (id == null || value == null) {
+      throw new Error("Incorrect class creation");
+    }
+    super(id, value);
+    this.name = classIDToName(this.id);
   }
 }

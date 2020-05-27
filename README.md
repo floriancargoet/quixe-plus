@@ -77,6 +77,10 @@ In Inform, when you say that a thing has a `length` `18`, it creates a `length` 
 By default, `getProperty()` returns raw values (as stored in the Quixe virtual machine) because it doesn't know what they are. `QuixePlus("red_door").getProperty("short_name")` might return something like `493460` which is an identifier for the array that contains and identifier for the string that you want. QuixePlus cannot know that `18` is the value that you want for the `length` and that `493460` is NOT the value that you want for `short_name`. That's why it always returns the raw value.
 Fortunately, you generally know the type of the property and you can help QuixePlus: `QuixePlus("red_door").getProperty("short_name", String)` will return "red door".
 
+##### Classes
+
+TODO!
+
 ##### Arrays
 
 TODO!
