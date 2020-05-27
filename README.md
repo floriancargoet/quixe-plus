@@ -28,9 +28,9 @@ QuixePlus is still under development so the installation process is a bit rough.
 2. Release your story with debug information
   - On OSX, the debug file `gameinfo.dbg` is automatically generated, on Windows you need to check "Generate Inform 6 debugging informations" in the Inform preferences.
   - You can use Inform to release the story, as usual
-  - Or you can use the `i7-release.sh` script (OSX only for now) which fixes some OSX issues and calls step 3 automatically.
+  - Or you can use the `i7-release.js` script (OSX only for now) which fixes some OSX issues and calls step 3 automatically.
 3. Extract and convert the debug information
- - Run the `i7-post-release.js` script. If you used `i7-release.sh`, this is done automatically for you.
+ - Run the `i7-post-release.js` script. If you used `i7-release.js`, this is done automatically for you.
 4. Your story is now released with QuixePlus and the much needed `gameinfo.js` file. To release a map with your story, see the [Maps section](#maps).
 
 ### Queries and types

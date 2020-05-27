@@ -63,8 +63,8 @@ function compile(source) {
 </plist>
     `);
 
-    const releaseScript = path.resolve(__dirname, "../scripts/i7-release.sh");
-    execSync(`${releaseScript} ${storyDir}`, { stdio: ["inherit"]});
+  const releaseScript = path.resolve(__dirname, "../scripts/i7-release.js");
+  execSync(`${releaseScript} ${storyDir}`, { stdio: ["inherit"] });
 
     const story = StoryLoader.load(storyDir);
 
