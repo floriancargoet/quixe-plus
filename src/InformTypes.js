@@ -128,7 +128,7 @@ export class InformObject extends InformValue {
     unlockable: "!lockable",
     unlocked: "!locked",
     handled: "moved",
-    "off": "!on",
+    off: "!on",
     closed: "!open",
     "fixed in place": "static",
     portable: "!static",
@@ -137,7 +137,7 @@ export class InformObject extends InformValue {
     // convenient aliases
     room: "mark_as_room",
     thing: "mark_as_thing",
-    lit: "light"
+    lit: "light",
   };
 
   // Add your own map by called InformObject.mergeAttrMap() or QuixePlus.mergeAttrMap()

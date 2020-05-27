@@ -20,13 +20,12 @@ const css = fs.readFileSync(cssFile, "utf8");
 window.$("<style>").html(css).appendTo(window.$("head"));
 // create required HTML for Glkote
 window
-    .$("body")
-    .html(
-      '<div id="gameport"><div id="windowport"><div id="errorcontent"></div>'
-    );
+  .$("body")
+  .html(
+    '<div id="gameport"><div id="windowport"><div id="errorcontent"></div>'
+  );
 
 const { gameinfo } = require("../src/GameInfo.js");
-
 
 let withStoryAlreadyCalled = false;
 global.withStory = function withStory(storySource, callback) {

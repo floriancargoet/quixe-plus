@@ -18,7 +18,6 @@ Include (-
 `;
 
 withStory(globalsStory, () => {
-
   test("we can access i7 globals by index", () => {
     expect(Q("Global_Vars").at(3, String)).toBe("Florian"); // pre-defined global
     expect(Q("Global_Vars").at(10)).toBe(7); // user global
@@ -31,5 +30,4 @@ withStory(globalsStory, () => {
   test("we can access i6 globals by name", () => {
     expect(Q("bar").value).toBe(6);
   });
-
 });

@@ -16,17 +16,17 @@ const MATERIALS_DIR = path.resolve(
 const GAMEINFO_FILE = path.resolve(PROJECT_DIR, "Build/gameinfo.dbg");
 const RELEASE_DIR = path.resolve(MATERIALS_DIR, "Release");
 const RELEASE_FILES = [
-    path.resolve(MATERIALS_DIR, "map.svg"),
-    path.resolve(MATERIALS_DIR, "map.js")
-]
+  path.resolve(MATERIALS_DIR, "map.svg"),
+  path.resolve(MATERIALS_DIR, "map.js"),
+];
 
 // Release these files if they exist
-RELEASE_FILES.forEach(file => {
-    if (fs.existsSync(file)) {
-      fs.copyFileSync(file, path.resolve(RELEASE_DIR, path.basename(file)));
-      console.log("Released extra file", path.basename(file));
-    }
-})
+RELEASE_FILES.forEach((file) => {
+  if (fs.existsSync(file)) {
+    fs.copyFileSync(file, path.resolve(RELEASE_DIR, path.basename(file)));
+    console.log("Released extra file", path.basename(file));
+  }
+});
 
 // Fail if the debug file is not found
 if (!fs.existsSync(GAMEINFO_FILE)) {

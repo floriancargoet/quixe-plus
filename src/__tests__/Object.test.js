@@ -21,7 +21,6 @@ The book is in the oak chest.
 `;
 
 withStory(objectStory, () => {
-
   test("we can get an object", () => {
     expect(Q("iron_chest")).toBeTruthy();
   });
@@ -38,7 +37,7 @@ withStory(objectStory, () => {
 
   test("we can declare and use 'wooden'", () => {
     QuixePlus.mergeAttrMap({
-        wooden: "!metal"
+      wooden: "!metal",
     });
     expect(Q("iron_chest").is("wooden")).toBe(false);
     expect(Q("oak_chest").is("wooden")).toBe(true);
@@ -66,5 +65,4 @@ withStory(objectStory, () => {
     expect(Q("iron_chest").getProperty("foo")).toBeNull();
     expect(Q("oak_chest").getProperty("size")).toBeNull();
   });
-
 });

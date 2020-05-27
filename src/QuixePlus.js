@@ -21,8 +21,8 @@ Object.assign(QuixePlus, Types, {
   SVGMap,
   internals: {
     gameinfo,
-    VM
-  }
+    VM,
+  },
 });
 
 // Short aliases

@@ -28,11 +28,11 @@ const excludePatterns = [
   /InformLibrary/,
   /property_numberspace_forcer/,
   /ValuePropertyHolder_[\d]+/,
-  /selfobj/
+  /selfobj/,
 ];
 
 function excludeInformDefaultObjects(name) {
-  return !excludePatterns.some(pattern => pattern.test(name))
+  return !excludePatterns.some((pattern) => pattern.test(name));
 }
 
 export function queryAll(q) {
@@ -51,11 +51,9 @@ export function queryAll(q) {
       results = Object.keys(gameinfo.objectsByID)
         // filter by name
         .filter(excludeInformDefaultObjects)
-        .map((id) =>
-          InformObject.create(id)
-        )
+        .map((id) => InformObject.create(id))
         // filter 12 compass directions
-        .filter(obj => !(obj.parent && obj.parent.id === "Compass"))
+        .filter((obj) => !(obj.parent && obj.parent.id === "Compass"));
     } else {
       const first = q.charAt(0);
       const rest = q.slice(1);
