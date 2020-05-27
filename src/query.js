@@ -1,5 +1,10 @@
 import { gameinfo } from "./GameInfo.js";
-import { InformValue, InformArray, InformObject } from "./InformTypes.js";
+import {
+  InformValue,
+  InformArray,
+  InformObject,
+  InformClass,
+} from "./InformTypes.js";
 
 export function query(q) {
   return queryAll(q)[0] || null;
@@ -66,6 +71,10 @@ export function queryAll(q) {
         const objectID = gameinfo.getObjectIDByName(q);
         if (objectID) {
           results.push(InformObject.create(objectID));
+        }
+        const classID = gameinfo.getClassIDByName(q);
+        if (classID) {
+          results.push(InformClass.create(classID));
         }
         const array = InformArray.create(q);
         if (array) {

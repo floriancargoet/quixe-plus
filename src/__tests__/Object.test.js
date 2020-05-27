@@ -45,7 +45,7 @@ withStory(objectStory, () => {
 
   test("we can get the parent of an object (its container or room", () => {
     expect(Q("iron_chest").parent).toEqual(Q("test_room"));
-    expect(Q("oak_chest").parent).toEqual(Q("nothing")); // TODO: maybe we should return null here
+    expect(Q("oak_chest").parent).toBeNull();
   });
 
   test("we can get what's in an object", () => {

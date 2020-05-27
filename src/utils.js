@@ -4,6 +4,10 @@ export function objectIDToName(id) {
   return id.replace(/^I[^_]*_/, "");
 }
 
+export function classIDToName(id) {
+  return id.replace(/^K[^_]*_/, "");
+}
+
 export function attributeIDToName(id) {
   return id.replace(/^p[0-9]+_/, "");
 }
