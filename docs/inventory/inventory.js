@@ -15,8 +15,8 @@ $(() => {
             if (child.is("worn")) {
                 str += " (being worn)";
             }
-            if (child.is("container")) {
-                str += child.is("closed") ? " (closed)" : " (open)";
+            if (child.is("openable")) {
+                str += child.is("open") ? " (open)" : " (closed)";
             }
             const $item = $("<li>").text(str);
             // include children if open (you could handle transparent containers here)
