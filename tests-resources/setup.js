@@ -40,3 +40,13 @@ global.withStory = function withStory(storySource, callback) {
   const firstLine = storySource.slice(0, storySource.indexOf("\n"));
   describe(`With story "${firstLine}"`, callback);
 };
+
+
+global.submitInput = function submitInput(...str) {
+  const lines = str.flatMap(s => s.split("\n"))
+  for (let line of lines) {
+    const event = window.$.Event("keypress");
+    event.which = event.keyCode = 13;
+    window.$(".Input").val(line).trigger(event);
+  }
+}
