@@ -1,0 +1,4 @@
+{
+    "release": ["inventory.js"],
+    "scripts": ["inventory.js"]
+}

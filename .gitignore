@@ -4,7 +4,7 @@
 coverage/
 
 # Inform files
-**/*.materials/
+**/*.materials/Release/
 **/*.inform/Build/
 **/*.inform/Index/
 **/*.inform/Release.blurb

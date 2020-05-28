@@ -3,7 +3,7 @@
 
 export class SVGMap {
   url = "./map.svg";
-  mapSelector = "#map";
+  containerSelector = "#quixeplus-pane";
   debug = false;
   onReady = () => {};
 
@@ -26,9 +26,9 @@ export class SVGMap {
       new Promise($), // doc ready
     ]);
     // Insert SVG in HTML
-    this.$map = $(this.mapSelector);
-    this.$map.html(svgText);
-    this.$svg = this.$map.find("svg");
+    this.$container = $(this.containerSelector);
+    this.$container.html(svgText);
+    this.$svg = this.$container.find("svg");
     this.log("Map ready.");
     this.onReady();
   }

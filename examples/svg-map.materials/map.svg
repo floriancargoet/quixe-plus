@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210.00093"
+   height="280.00046"
+   viewBox="0 0 210.00093 280.00046"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   sodipodi:docname="map.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     inkscape:current-layer="g878"
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="4.7468185"
+     inkscape:cx="84.988592"
+     inkscape:cy="150.69314"
+     inkscape:document-units="px"
+     inkscape:document-rotation="0"
+     showgrid="true"
+     inkscape:window-width="1440"
+     inkscape:window-height="855"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     fit-margin-top="48.5"
+     fit-margin-left="48.5"
+     fit-margin-right="48.5"
+     fit-margin-bottom="48.5"
+     lock-margins="true"
+     units="px">
+    <inkscape:grid
+       dotted="false"
+       originy="1.8768311e-08"
+       originx="0.00046893149"
+       id="grid1078"
+       type="xygrid" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     data-level="-1"
+     style="display:none"
+     transform="translate(9.3897373e-4)"
+     inkscape:label="level_-1"
+     id="layer1"
+     inkscape:groupmode="layer">
+    <rect
+       id="cave"
+       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#0094af;stroke-width:3.00094;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       width="80"
+       height="60"
+       x="50"
+       y="170"
+       data-room="cave" />
+    <rect
+       data-state="closed"
+       data-door="trappe"
+       y="175"
+       x="114.99953"
+       height="10"
+       width="10"
+       id="trappe"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd" />
+    <rect
+       data-state="open"
+       style="display:inline;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1"
+       id="trappe-0-7-8"
+       width="10"
+       height="10"
+       x="114.99906"
+       y="175"
+       data-door="trappe" />
+  </g>
+  <g
+     data-level="level_0"
+     inkscape:label="level_0"
+     inkscape:groupmode="layer"
+     style="display:inline"
+     transform="translate(-0.50311196,48.33007)"
+     id="g864">
+    <rect
+       id="cuisine"
+       data-room="cuisine"
+       y="121.66993"
+       x="50.503582"
+       height="60"
+       width="80"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#0094af;stroke-width:3.00094;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="salon"
+       data-room="salon"
+       style="fill:#ffffff;fill-opacity:1;stroke:#0094af;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       width="80"
+       height="60"
+       x="50.504051"
+       y="61.66993" />
+    <rect
+       id="chambre"
+       data-room="chambre"
+       style="fill:#ffffff;fill-opacity:1;stroke:#0094af;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       width="80"
+       height="60"
+       x="50.504051"
+       y="1.66993" />
+    <path
+       id="balcon"
+       data-room="balcon"
+       d="m 130.50405,1.66993 30,5 v 50 l -30,5 z"
+       style="fill:#ffffff;fill-opacity:1;stroke:#0094af;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       style="display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.999996;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="pas_de_porte_cuisine"
+       width="18"
+       height="4"
+       x="56.503113"
+       y="119.66993" />
+    <rect
+       data-state="closed"
+       data-door="portedelacuisine"
+       style="fill:#cbcbcb;fill-opacity:1;stroke:#000000;stroke-width:0.730765;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       width="20"
+       height="5"
+       x="55.504051"
+       y="119.16993"
+       rx="1.0134618"
+       ry="1.0134618"
+       id="portedelacuisine-closed" />
+    <rect
+       data-door="portefenetre"
+       y="6.66993"
+       x="129.50404"
+       height="50"
+       width="2"
+       style="fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.707109;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect847" />
+    <rect
+       y="59.669926"
+       x="70.504051"
+       height="4"
+       width="39.999996"
+       id="rect1101"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.999996;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       transform="translate(-1.500469,-1.5)"
+       data-door="escalier_en_bois"
+       id="g858">
+      <path
+         id="path926"
+         d="m 117.00452,103.16993 h 10"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 117.00452,98.16993 h 10"
+         id="path926-4" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 117.00452,93.16993 h 10"
+         id="path926-7" />
+      <path
+         id="path926-4-4"
+         d="m 117.00452,88.16993 h 10"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 117.00452,83.16993 h 10"
+         id="path926-48" />
+      <path
+         id="path926-4-7"
+         d="m 117.00452,78.16993 h 10"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 117.00452,73.16993 h 10"
+         id="path926-3" />
+      <path
+         id="path926-4-3"
+         d="m 117.00452,68.16993 h 10"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <path
+       data-state="locked closed"
+       data-door="portefenetre"
+       style="stroke-width:0.330449"
+       id="path983"
+       d="m 125.5533,48.720689 c 0,-1.131003 -0.91946,-2.050759 -2.05016,-2.050759 -1.13009,0 -2.04924,0.919756 -2.04924,2.050759 v 1.476292 h -0.94985 v 5.268692 h 6 v -5.268388 h -0.95075 z m -1.02554,1.476596 h -2.04741 v -1.476292 c 0,-0.566261 0.45926,-1.024924 1.0231,-1.024924 0.56443,0 1.02461,0.458663 1.02461,1.024924 z" />
+    <path
+       data-state="locked closed"
+       data-door="portedelacuisine"
+       d="m 60.553296,109.72069 c 0,-1.131 -0.919453,-2.05076 -2.050151,-2.05076 -1.13009,0 -2.04924,0.91976 -2.04924,2.05076 v 1.47629 h -0.949854 v 5.26869 h 6 v -5.26839 h -0.950755 z m -1.025535,1.47659 h -2.04741 v -1.47629 c 0,-0.56626 0.459262,-1.02492 1.023098,-1.02492 0.564433,0 1.024615,0.45866 1.024615,1.02492 z"
+       id="path983-3"
+       style="display:inline;stroke-width:0.330449" />
+    <rect
+       data-state="closed"
+       style="display:inline;fill:#000000;fill-opacity:1;fill-rule:evenodd"
+       id="trappe-0"
+       width="10"
+       height="10"
+       x="115.50358"
+       y="126.66993"
+       data-door="trappe" />
+    <rect
+       data-door="trappe"
+       y="126.66993"
+       x="115.50358"
+       height="10"
+       width="10"
+       id="trappe-0-7"
+       style="display:inline;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1"
+       data-state="open" />
+    <rect
+       id="portedelacuisine-open"
+       ry="1.0134618"
+       rx="1.0134618"
+       y="119.16993"
+       x="74.504051"
+       height="5"
+       width="20"
+       style="display:inline;fill:#cbcbcb;fill-opacity:1;stroke:#000000;stroke-width:0.730765;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       data-door="portedelacuisine"
+       data-state="open" />
+  </g>
+  <g
+     data-level="level_1"
+     inkscape:groupmode="layer"
+     inkscape:label="level_1"
+     style="display:none"
+     transform="translate(-0.50311196,48.33007)"
+     id="g878">
+    <rect
+       data-room="grenier"
+       y="1.6699301"
+       x="50.504051"
+       height="180"
+       width="80"
+       style="fill:#fefefe;fill-opacity:1;stroke:#0094af;stroke-width:2.31099;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect866" />
+    <g
+       transform="translate(-1.500469,-1.5)"
+       data-door="escalier_en_bois"
+       id="g876">
+      <path
+         id="path926-76"
+         d="m 117.00452,103.16993 h 10"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 117.00452,98.16993 h 10"
+         id="path926-4-71" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 117.00452,93.16993 h 10"
+         id="path926-7-4" />
+      <path
+         id="path926-4-4-8"
+         d="m 117.00452,88.16993 h 10"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 117.00452,83.16993 h 10"
+         id="path926-48-1" />
+      <path
+         id="path926-4-7-8"
+         d="m 117.00452,78.16993 h 10"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 117.00452,73.16993 h 10"
+         id="path926-3-5" />
+      <path
+         id="path926-4-3-3"
+         d="m 117.00452,68.16993 h 10"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>

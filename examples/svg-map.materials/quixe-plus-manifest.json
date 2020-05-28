@@ -1,0 +1,4 @@
+{
+    "release": ["map.js", "map.svg"],
+    "scripts": ["map.js"]
+}

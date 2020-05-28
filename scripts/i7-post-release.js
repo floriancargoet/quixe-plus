@@ -15,18 +15,30 @@ const MATERIALS_DIR = path.resolve(
 );
 const GAMEINFO_FILE = path.resolve(PROJECT_DIR, "Build/gameinfo.dbg");
 const RELEASE_DIR = path.resolve(MATERIALS_DIR, "Release");
-const RELEASE_FILES = [
-  path.resolve(MATERIALS_DIR, "map.svg"),
-  path.resolve(MATERIALS_DIR, "map.js"),
-];
+const MANIFEST_FILE = path.resolve(MATERIALS_DIR, "quixe-plus-manifest.json");
+let manifest = {};
+if (fs.existsSync(MANIFEST_FILE)) {
+  manifest = require(MANIFEST_FILE);
+}
 
-// Release these files if they exist
-RELEASE_FILES.forEach((file) => {
+// Release extra files
+(manifest.release || []).forEach((file) => {
+  file = path.resolve(MATERIALS_DIR, file);
   if (fs.existsSync(file)) {
     fs.copyFileSync(file, path.resolve(RELEASE_DIR, path.basename(file)));
     console.log("Released extra file", path.basename(file));
   }
 });
+
+// Inject scripts
+if (manifest.scripts && manifest.scripts.length > 0) {
+  const placeholderTag = "<!-- extra scripts here -->";
+  const tags = manifest.scripts.map((file) => `<script src="${file}" type="text/javascript"></script>`);
+  const htmlFile = path.resolve(RELEASE_DIR, "play.html");
+  let html = fs.readFileSync(htmlFile, "utf8");
+  html = html.replace("<!-- extra scripts here -->", [placeholderTag, ...tags].join("\n"));
+  fs.writeFileSync(htmlFile, html);
+}
 
 // Fail if the debug file is not found
 if (!fs.existsSync(GAMEINFO_FILE)) {

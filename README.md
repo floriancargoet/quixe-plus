@@ -232,7 +232,11 @@ const map = new QuixePlus.SVGMap({
 #### How to release the map
 
 Put your `map.svg` and `map.js` files in your `.materials` folder.
-The `i7-post-release.js` script will copy them to the Release folder.
-
-Alternatively you can try to use the Inform instruction: "Release along with a file…" but it is [broken in 6L38 on OSX](http://inform7.com/mantis/view.php?id=1499) and I haven't tried it yet on another version / OS.
-
+Create a `quixe-plus-manifest.json` file in your `.materials` folder with the following content:
+```json
+{
+    "release": ["map.js", "map.svg"],
+    "scripts": ["map.js"]
+}
+```
+The `i7-post-release.js` script will copy the files to the `Release` folder and add the script tags to `play.html`.

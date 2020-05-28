@@ -4,17 +4,12 @@ Standard CSS file for use with Standard.html and Standard-Source.html.
 
 */
 
-#map {
+#quixeplus-pane {
 	position: absolute;
 	top: 0;
 	left: 50%; /* interpreter take the left half of the screen */
 	right: 0;
 	bottom: 30px; /* room for credits */
-}
-
-#map svg {
-	width: 100%;
-	height: 100%;
 }
 
 body

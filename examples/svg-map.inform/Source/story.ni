@@ -1,4 +1,4 @@
-"Demo QuixePlus Map" by Florian Cargoët (in French).
+"Demo of the QuixePlus Map" by Florian Cargoët (in French).
 The story headline is "Une démonstration de QuixePlus.".
 
 Part 1 - Configurations & setup

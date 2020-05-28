@@ -7,7 +7,8 @@
     "format": "prettier --write src/ scripts/*.js tests-resources/",
     "build": "mkdir build; rollup -c; cp build/QuixePlus.min.js templates/QuixePlus",
     "test": "jest --silent",
-    "test-watch": "jest --silent --watch"
+    "test-watch": "jest --silent --watch",
+    "build-examples": "scripts/build-examples.sh"
   },
   "author": "Florian Cargoët",
   "license": "ISC",
