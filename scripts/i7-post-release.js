@@ -33,10 +33,15 @@ if (fs.existsSync(MANIFEST_FILE)) {
 // Inject scripts
 if (manifest.scripts && manifest.scripts.length > 0) {
   const placeholderTag = "<!-- extra scripts here -->";
-  const tags = manifest.scripts.map((file) => `<script src="${file}" type="text/javascript"></script>`);
+  const tags = manifest.scripts.map(
+    (file) => `<script src="${file}" type="text/javascript"></script>`
+  );
   const htmlFile = path.resolve(RELEASE_DIR, "play.html");
   let html = fs.readFileSync(htmlFile, "utf8");
-  html = html.replace("<!-- extra scripts here -->", [placeholderTag, ...tags].join("\n"));
+  html = html.replace(
+    "<!-- extra scripts here -->",
+    [placeholderTag, ...tags].join("\n")
+  );
   fs.writeFileSync(htmlFile, html);
 }
 
