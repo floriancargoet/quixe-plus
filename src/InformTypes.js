@@ -243,6 +243,29 @@ export class InformObject extends InformValue {
     return value;
   }
 
+  printAllProperties() {
+    const propsStart = VM.read4(this.value + 16); // address where properties start
+    const propCount = VM.read4(propsStart + 0); // number of properties at relative address 0
+    for (let i = 0; i < propCount; i++) {
+      const propStart = propsStart + 4 + i * 10; // address where this property starts
+      const propID = VM.read2(propStart + 0); // numeric id of the property (called value in gameinfo)
+      const propAddr = VM.read4(propStart + 4);
+      const propValue = VM.read4(propAddr);
+      const propName = gameinfo.propertyIDsByValue[propID];
+      console.log(propID, propName, propValue, propStart);
+    }
+  }
+
+  printAllAttributes() {
+    Object.keys(gameinfo.attributesByID).forEach((attrID) => {
+      const attrValue = gameinfo.getAttributeValueByID(attrID);
+      const attribute = Boolean(VM.getObjectAttribute(this.value, attrValue));
+      const byte = 1 + (attrValue >> 3);
+      const bit = attrValue & 7;
+      console.log(attrID, attribute, byte, bit);
+    });
+  }
+
   getAttribute(attrName) {
     const attrID = gameinfo.getAttributeIDByName(attrName);
     if (!attrID) return null;
