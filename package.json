@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "lint": "eslint src/",
-    "format": "prettier --write src/ scripts/*.js tests-resources/",
+    "format": "prettier --write src/ scripts/ tests-resources/ utils/",
     "build": "mkdir build; rollup -c; cp build/QuixePlus.min.js templates/QuixePlus",
     "test": "jest --silent",
     "test-watch": "jest --silent --watch",

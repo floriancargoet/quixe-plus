@@ -6,6 +6,7 @@ const { execSync } = require("child_process");
 const uuid = require("uuid");
 const rimraf = require("rimraf");
 const StoryLoader = require("./StoryLoader");
+const InformCompiler = require("../utils/InformCompiler.js");
 
 function compile(source) {
   // 1 - make a temporary directory
@@ -66,8 +67,13 @@ function compile(source) {
     `
   );
 
-  const releaseScript = path.resolve(__dirname, "../scripts/i7-release.js");
-  execSync(`${releaseScript} ${storyDir}`, { stdio: ["inherit"] });
+  const compiler = new InformCompiler({
+    story: storyDir,
+    silent: true,
+  });
+
+  compiler.compileI7();
+  compiler.compileI6();
 
   const story = StoryLoader.load(storyDir);
 

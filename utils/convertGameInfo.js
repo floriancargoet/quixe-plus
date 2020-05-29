@@ -53,7 +53,7 @@ module.exports = function convertGameInfo(xmlString) {
       propertiesByID: makeMap("property"),
       attributesByID: makeMap("attribute"),
       arraysByID: makeMap("array", arrayMapper()),
-      classesByID: makeMap("class")
+      classesByID: makeMap("class"),
     };
   });
 
