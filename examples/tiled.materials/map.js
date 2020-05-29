@@ -1,13 +1,18 @@
 /* global $, QuixePlus, Phaser */
 $(() => {
-  class Door {
-    constructor(sprite, layerName) {
-      this.layerName = layerName;
+  class Entity {
+    constructor(config) {
+      Object.assign(this, config);
+      this.baseFrame = this.sprite.frame.name; // a number
+      this.name = this.sprite.name;
+    }
+  }
+
+  class Door extends Entity {
+    constructor(config) {
+      super(config);
       this.open = false;
       this.locked = false;
-      this.sprite = sprite;
-      this.baseFrame = sprite.frame.name; // a number
-      this.name = this.sprite.name;
     }
     setOpen(open) {
       this.open = open;
@@ -123,6 +128,7 @@ $(() => {
       this.map.objects.forEach(l => {
         this.createEntitiesFromMapObjects(l.name, "door", Door);
         this.createEntitiesFromMapObjects(l.name, "passage", SecretPassage);
+        this.createEntitiesFromMapObjects(l.name, "player", Entity);
       });
 
       this.animatedTiles.init(this.map);
@@ -143,16 +149,25 @@ $(() => {
               entity.setLocked(door.is("locked"));
             });
         },
-        ".room": room => {
+        ".room": (room, context) => {
+          const isCurrent = context.location.id === room.id;
           // Phaser drops group properties during parsing so we try to match the group name instead
           const re = new RegExp(`/${room.name}/`);
           const isVisited = room.is("visited");
+          // tile layers from this room
           this.layers
             .filter(l => re.test(l.layer.name))
             .forEach(l => (l.visible = isVisited));
+          // objects in room
           this.entities
             .filter(e => re.test(e.layerName))
-            .forEach(e => (e.sprite.visible = isVisited));
+            .forEach(e => {
+              if (e.type === "player") {
+                e.sprite.visible = isCurrent;
+              } else {
+                e.sprite.visible = isVisited;
+              }
+            });
         }
       });
     }
@@ -161,8 +176,8 @@ $(() => {
       const sprites = this.createSpritesFromMapObjects(layerName, type, {
         key: "tiles"
       });
-      sprites.forEach(s => {
-        this.entities.push(new Class(s, layerName));
+      sprites.forEach(sprite => {
+        this.entities.push(new Class({ sprite, type, layerName }));
       });
     }
 
