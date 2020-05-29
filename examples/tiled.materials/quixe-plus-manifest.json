@@ -1,0 +1,7 @@
+{
+    "release": ["map.js", "map.json", "tileset.png"],
+    "scripts": [
+        "https://cdn.jsdelivr.net/npm/phaser@3.23.0/dist/phaser.js",
+        "map.js"
+    ]
+}
