@@ -119,8 +119,8 @@ class GameInfo {
 
 // instance
 let gameinfo = new GameInfo();
-if (window.gameinfo) {
-  gameinfo.init(window.gameinfo);
+if (globalThis.gameinfo) {
+  gameinfo.init(globalThis.gameinfo);
 }
 
 export { gameinfo };

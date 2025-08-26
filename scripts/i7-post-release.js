@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-/* eslint-env node */
-const fs = require("fs");
-const path = require("path");
-const convertGameinfo = require("../utils/convertGameinfo");
+import fs from "node:fs";
+import path from "node:path";
+import { convertGameInfo } from "../utils/convertGameInfo.js";
 
 console.log("Inform Post Release Script");
 
@@ -18,7 +17,7 @@ const RELEASE_DIR = path.resolve(MATERIALS_DIR, "Release");
 const MANIFEST_FILE = path.resolve(MATERIALS_DIR, "quixe-plus-manifest.json");
 let manifest = {};
 if (fs.existsSync(MANIFEST_FILE)) {
-  manifest = require(MANIFEST_FILE);
+  manifest = JSON.parse(fs.readFileSync(MANIFEST_FILE, "utf-8"));
 }
 
 // Release extra files
@@ -53,7 +52,7 @@ if (!fs.existsSync(GAMEINFO_FILE)) {
   process.exit(1);
 }
 
-const gameinfo = convertGameinfo(fs.readFileSync(GAMEINFO_FILE, "utf8"));
+const gameinfo = convertGameInfo(fs.readFileSync(GAMEINFO_FILE, "utf8"));
 
 const gameinfoContents = `var gameinfo = ${JSON.stringify(gameinfo)};`;
 fs.writeFileSync(path.resolve(RELEASE_DIR, "gameinfo.js"), gameinfoContents);

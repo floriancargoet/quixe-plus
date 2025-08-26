@@ -1,7 +1,7 @@
 /* eslint-env node */
-const fs = require("fs");
-const path = require("path");
-const convertGameInfo = require("../utils/convertGameInfo");
+import fs from "node:fs";
+import path from "node:path";
+import { convertGameInfo } from "../utils/convertGameInfo";
 
 // Cache shared between test files
 // Jest runs each test file with its own module registry so we can't rely on Node module cache.
@@ -13,10 +13,10 @@ class Story {
     this.gameinfo = gameinfo;
   }
 
-  run(window, gameinfo) {
+  run(globalObject, gameinfo) {
     gameinfo.init(this.gameinfo);
 
-    window.game_options = {
+    globalObject.game_options = {
       // called after each update even if recording is disabled
       // before_select_hook : updater.before_select_hook,
       //image_info_map: 'StaticImageInfo',  // image data is here, not in blorb
@@ -26,11 +26,11 @@ class Story {
       inspacing: 0, // gap between windows
       outspacing: 0, // gap between windows and edge of gameport
     };
-    window.GiLoad.load_run(null, this.ulx, "base64");
+    globalObject.GiLoad.load_run(null, this.ulx, "base64");
   }
 }
 
-module.exports = {
+export const storyLoader = {
   load(storyPath) {
     // Load the ULX file as base64
     // Load & convert the gameinfo file

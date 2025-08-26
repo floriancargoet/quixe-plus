@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-/* eslint-env node */
-const fs = require("fs");
-const InformCompiler = require("../utils/InformCompiler.js");
+
+import fs from "node:fs";
+import { InformCompiler } from "../utils/InformCompiler.js";
 
 if (!process.argv[2]) {
   console.error("Usage:");
@@ -11,8 +11,8 @@ if (!process.argv[2]) {
 
 const story = fs.realpathSync(process.argv[2]);
 const compiler = new InformCompiler({
-    story,
-    testing: process.env.TESTING === "1"
+  story,
+  testing: process.env.TESTING === "1",
 });
 
 compiler.compileI7();

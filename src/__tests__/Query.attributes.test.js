@@ -1,7 +1,7 @@
 /* eslint-env jest */
 /* global withStory */
-const { query: Q, queryAll: QQ } = require("../query.js");
-const { InformObject } = require("../InformTypes.js");
+import { query as Q, queryAll as QQ } from "../query.js";
+import { InformObject } from "../InformTypes.js";
 
 const attributesStory = `"Attributes" by Florian.
 

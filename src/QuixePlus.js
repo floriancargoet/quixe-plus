@@ -26,5 +26,5 @@ Object.assign(QuixePlus, Types, {
 });
 
 // Short aliases
-window.QQ = queryAll;
-window.Q = query;
+globalThis.QQ = queryAll;
+globalThis.Q = query;

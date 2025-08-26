@@ -1,7 +1,7 @@
 /* eslint-env jest */
 /* global withStory */
-const { query: Q } = require("../query.js");
-const { Player } = require("../Player.js");
+import { query as Q } from "../query.js";
+import { Player } from "../Player.js";
 
 const inventoryStory = `"Inventory" by Florian.
 

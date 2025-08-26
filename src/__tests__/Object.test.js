@@ -1,7 +1,7 @@
 /* eslint-env jest */
 /* global withStory */
-const QuixePlus = require("../QuixePlus.js").default;
-const { query: Q } = require("../query.js");
+import QuixePlus from "../QuixePlus.js";
+import { query as Q } from "../query.js";
 
 const objectStory = `"Object" by Florian.
 

@@ -1,8 +1,8 @@
-if (!window.Quixe) {
+if (!globalThis.Quixe) {
   throw new Error("Missing global Quixe");
 }
 
-const vm_internals = window.Quixe.get_vm_internals();
+const vm_internals = globalThis.Quixe.get_vm_internals();
 
 if (!vm_internals.getConstantString) {
   throw new Error("Missing Quixe modification getConstantString()");

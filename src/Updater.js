@@ -3,8 +3,8 @@ import { queryAll } from "./query.js";
 
 const instances = [];
 
-if (window.game_options) {
-  window.game_options.before_select_hook = function () {
+if (globalThis.game_options) {
+  globalThis.game_options.before_select_hook = function () {
     instances.forEach((instance) => instance.handleNewTurn());
   };
 }

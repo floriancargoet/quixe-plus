@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-/* eslint-env node */
-const path = require("path");
-const os = require("os");
-const fs = require("fs");
-const cp = require("child_process");
+import path, { dirname } from "node:path";
+import os from "node:os";
+import fs from "node:fs";
+import cp from "node:child_process";
+import { fileURLToPath } from "node:url";
 
 const APP_CONTENTS = "/Applications/Inform.app/Contents";
 const NI_BIN = `${APP_CONTENTS}/MacOS/6L38/ni`;
@@ -14,12 +14,14 @@ const INTERNAL = `${APP_CONTENTS}/Resources/retrospective/6L38`;
 const EXTERNAL = `${os.homedir()}/Library/Inform`;
 const LIBRARY = `${APP_CONTENTS}/Resources/Library/6.11`;
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 const defaultOptions = {
   testing: false,
   silent: false,
 };
 
-module.exports = class InformCompiler {
+export class InformCompiler {
   constructor(options) {
     this.options = Object.assign({}, defaultOptions, options);
     if (!fs.existsSync(options.story)) {
@@ -141,4 +143,4 @@ module.exports = class InformCompiler {
       }
     );
   }
-};
+}

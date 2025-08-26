@@ -1,6 +1,6 @@
 /* eslint-env jest */
 /* global withStory */
-const { query: Q } = require("../query.js");
+import { query as Q } from "../query.js";
 
 const globalsStory = `"Globals" by Florian.
 

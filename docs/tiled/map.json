@@ -350,6 +350,12 @@
                 }],
          "name":"Level 0",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"level",
+                 "type":"int",
+                 "value":0
+                }],
          "type":"group",
          "visible":true,
          "x":0,

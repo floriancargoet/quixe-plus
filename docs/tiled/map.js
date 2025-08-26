@@ -114,10 +114,7 @@ $(() => {
       this.map.addTilesetImage("tiles");
       this.layers = [];
       this.map.layers.forEach(l => {
-        const staticProperty = (l.properties || []).find(
-          p => p.name === "static"
-        );
-        if (staticProperty && staticProperty.value === true) {
+        if (l.properties.static) {
           this.layers.push(this.map.createStaticLayer(l.name, "tiles"));
         } else {
           this.layers.push(this.map.createDynamicLayer(l.name, "tiles"));
@@ -151,16 +148,14 @@ $(() => {
         },
         ".room": (room, context) => {
           const isCurrent = context.location.id === room.id;
-          // Phaser drops group properties during parsing so we try to match the group name instead
-          const re = new RegExp(`/${room.name}/`);
           const isVisited = room.is("visited");
           // tile layers from this room
           this.layers
-            .filter(l => re.test(l.layer.name))
+            .filter(l => l.layer.properties.room === room.name)
             .forEach(l => (l.visible = isVisited));
           // objects in room
           this.entities
-            .filter(e => re.test(e.layerName))
+            .filter(e => e.layer.properties.room === room.name)
             .forEach(e => {
               if (e.type === "player") {
                 e.sprite.visible = isCurrent;
@@ -176,8 +171,9 @@ $(() => {
       const sprites = this.createSpritesFromMapObjects(layerName, type, {
         key: "tiles"
       });
+      const layer = this.map.getObjectLayer(layerName);
       sprites.forEach(sprite => {
-        this.entities.push(new Class({ sprite, type, layerName }));
+        this.entities.push(new Class({ sprite, type, layer }));
       });
     }
 

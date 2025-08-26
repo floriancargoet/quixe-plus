@@ -1,14 +1,13 @@
 /* eslint-env node */
-const os = require("os");
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
-const uuid = require("uuid");
-const rimraf = require("rimraf");
-const StoryLoader = require("./StoryLoader");
-const InformCompiler = require("../utils/InformCompiler.js");
+import os from "os";
+import fs from "fs";
+import path from "path";
+import uuid from "uuid";
+import rimraf from "rimraf";
+import { StoryLoader } from "./StoryLoader";
+import { InformCompiler } from "../utils/InformCompiler.js";
 
-function compile(source) {
+export function compile(source) {
   // 1 - make a temporary directory
   // 2 - generate story files
   // 4 - invoke inform
@@ -81,7 +80,3 @@ function compile(source) {
 
   return story;
 }
-
-module.exports = {
-  compile,
-};

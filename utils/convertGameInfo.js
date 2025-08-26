@@ -1,7 +1,6 @@
-/* eslint-env node */
-const xml2js = require("xml2js");
+import xml2js from "xml2js";
 
-module.exports = function convertGameInfo(xmlString) {
+export function convertGameInfo(xmlString) {
   const parser = new xml2js.Parser();
   let gameinfo;
 
@@ -58,4 +57,4 @@ module.exports = function convertGameInfo(xmlString) {
   });
 
   return gameinfo;
-};
+}
